@@ -9,7 +9,7 @@ var more = document.querySelector(".more");
 //call API
 async function loadCharacters(url) {
     try {
-        $main.innerHTML = `<img class="loader" src="./assets/loader.svg">`
+        $main.innerHTML = `<img class="loader" src="./loader.svg">`
         
         let res = await fetch(url), 
         json = await res.json(),
@@ -21,11 +21,11 @@ async function loadCharacters(url) {
         if(!res.ok) throw {status: res.status, statusText: res.statusText}
 
         for(let i = 0; i < json.results.length; i++) {
-            // console.log(json.results[i]);
+            
             try {
                 let res = await fetch(json.results[i].url),
                 characters = await res.json();
-                // console.log(res, characters)
+                
                 if(!res.ok) throw {status: res.status, statusText: res.statusText}
 
                 $template += `
